@@ -6,7 +6,7 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 22:45:13 by marmoral          #+#    #+#             */
-/*   Updated: 2023/04/29 09:21:29 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:49:46 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ static int	find_start(char *str)
 	return (i);
 }
 
+/*
+	Function that takes a string and turns it into a decimal number.
+*/
 double	ft_atod(char *str)
 {
 	int		i;

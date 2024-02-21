@@ -6,7 +6,7 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 23:59:55 by marmoral          #+#    #+#             */
-/*   Updated: 2024/02/20 14:31:03 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:39:42 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 	Exiting the program safely.
+	MLX functions to memory free up the window.
 */
 int	exit_ac(t_info *info)
 {
@@ -23,7 +24,7 @@ int	exit_ac(t_info *info)
 }
 
 /*
-	Modifies the edge values by 0.5x(zooms) and 2x(zooms out) and
+	Modifies the edge values by 0.8x(zooms) and 1.3x(zooms out) and
 	redraws the fractal.
 */
 int	zoom(int key, int x, int y, t_info *info)
@@ -52,6 +53,7 @@ int	zoom(int key, int x, int y, t_info *info)
 }
 
 /*
+	Handles Movement with the arrow keys.
 	Shifts x(for horizontal movement) and y(for vertical movement) edge values
 	from the center of the coordinated system by 0.05 times. Then redraw the
 	fractal.
@@ -87,6 +89,7 @@ static void	arrows(int key, t_info *info)
 
 /*
 	Increases iteration value and redraws the fractal.
+	Max Number of interations is setup to 420 and minimum to 60.
 */
 static void	increaseit(int key, t_info *info)
 {

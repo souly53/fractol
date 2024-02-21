@@ -6,12 +6,15 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:08:27 by marmoral          #+#    #+#             */
-/*   Updated: 2024/02/21 11:29:25 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:47:00 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
+/*
+	Keeps the values that are being increased/decreased inside the RGB range.
+*/
 static int	check_max_values(int key, t_info *info)
 {
 	if ((info->color.r + 25 > 255) && key == R_Color)
@@ -59,6 +62,9 @@ static int	check_max_values(int key, t_info *info)
 	return (0);
 }
 
+/*
+	Checks if the values given are valid inside the RGB range.
+*/
 void	precheck_colors(char **av, int ac)
 {
 	int	a;
@@ -83,6 +89,12 @@ void	precheck_colors(char **av, int ac)
 	}
 }
 
+/*
+	Handles color change in the RGB range with the intuitive R, G and B keys
+	to increase the value of each individual range. The keys to reduce its 
+	value are T, H and N in according order.
+	The values are limited by the range itself (0-255).
+*/
 void	change_colors(int key, t_info *info)
 {
 	if (check_max_values(key, info))

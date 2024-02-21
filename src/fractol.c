@@ -6,18 +6,23 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:32:59 by marmoral          #+#    #+#             */
-/*   Updated: 2024/02/21 11:29:20 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:51:50 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
 /*
+	-------EXAMPLES-------
 	make re && ./fractol m 255 255 0
 	make re && ./fractol j 0.285 0.01 0 255 255
 	./fractol j 0.355534 -0.337292 0 255 255
 	norminette src && norminette libft && norminette includes
 	Sets up the Window.
+*/
+
+/*
+	Sets up the window with accordingly MLX library functions.
 */
 static void	setup_win(t_info *info)
 {
