@@ -6,7 +6,7 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:32:59 by marmoral          #+#    #+#             */
-/*   Updated: 2024/02/20 15:42:29 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:29:20 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,3 +82,6 @@ int	main(int ac, char **av)
 	mlx_loop(info.mlx_ptr);
 	return (0);
 }
+/*
+test
+*/
