@@ -6,7 +6,7 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 21:01:30 by marmoral          #+#    #+#             */
-/*   Updated: 2024/02/21 13:00:28 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:05:44 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	mj(double cr, double ci, t_info *info)
 		z.r = z.r * z.r - z.i * z.i + cr;
 		z.i = tmp;
 	}
-	if (n == info->max_i)
+	if (n == info->max_it)
 		return (0);
 	return (n);
 }
