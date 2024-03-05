@@ -6,7 +6,7 @@
 #    By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/15 14:17:36 by marmoral          #+#    #+#              #
-#    Updated: 2024/02/20 14:09:45 by marmoral         ###   ########.fr        #
+#    Updated: 2024/03/05 20:46:15 by marmoral         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS	= -Wall -Werror -Wextra -I ./includes/fractol.h
 LPATH	= ./libft/
 MLX		= ./mlx/
 
-SRCS	= $(addprefix src/, fractol.c utils.c functions.c ft_atod.c actions.c colors.c)
+SRCS	= $(addprefix src/, fractol.c utils.c functions.c ft_atod.c actions.c colors.c drawings.c)
 OBJS	= $(SRCS:.c=.o)
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 

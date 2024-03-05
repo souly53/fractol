@@ -6,7 +6,7 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:57:49 by marmoral          #+#    #+#             */
-/*   Updated: 2024/02/20 14:30:17 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/03/05 22:17:17 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 # define E_KEY 14
 # define MWDOWN 4
 # define MWUP 5
-# define R_Color 15
-# define G_Color 5
-# define B_Color 11
-# define R_Color_M 17
-# define G_Color_M 4
-# define B_Color_M 45
+# define R_COLOR 15
+# define G_COLOR 5
+# define B_COLOR 11
+# define R_COLOR_M 17
+# define G_COLOR_M 4
+# define B_COLOR_M 45
 
 #endif

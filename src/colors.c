@@ -6,7 +6,7 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:08:27 by marmoral          #+#    #+#             */
-/*   Updated: 2024/02/21 11:47:00 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/03/05 22:17:46 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,44 @@
 /*
 	Keeps the values that are being increased/decreased inside the RGB range.
 */
-static int	check_max_values(int key, t_info *info)
+static int	checkIfMaxValuesReached(int key, t_info *info)
 {
-	if ((info->color.r + 25 > 255) && key == R_Color)
+	if ((info->color.r + 25 > 255) && key == R_COLOR)
 	{
 		ft_putstr_fd("Max R_Color Value reached: ", 1);
 		ft_putnbr_fd(info->color.r, 1);
 		ft_putchar_fd('\n', 1);
 		return (1);
 	}
-	else if ((info->color.g + 25 > 255) && key == G_Color)
+	else if ((info->color.g + 25 > 255) && key == G_COLOR)
 	{
 		ft_putstr_fd("Max G_Color Value reached: ", 1);
 		ft_putnbr_fd(info->color.g, 1);
 		ft_putchar_fd('\n', 1);
 		return (1);
 	}
-	else if ((info->color.b + 25 > 255) && key == B_Color)
+	else if ((info->color.b + 25 > 255) && key == B_COLOR)
 	{
 		ft_putstr_fd("Max B_Color Value reached: ", 1);
 		ft_putnbr_fd(info->color.b, 1);
 		ft_putchar_fd('\n', 1);
 		return (1);
 	}
-	else if ((info->color.r - 25 < 0) && key == R_Color_M)
+	else if ((info->color.r - 25 < 0) && key == R_COLOR_M)
 	{
 		ft_putstr_fd("R_Color Value can't go below 0: ", 1);
 		ft_putnbr_fd(info->color.r, 1);
 		ft_putchar_fd('\n', 1);
 		return (1);
 	}
-	else if ((info->color.g - 25 < 0) && key == G_Color_M)
+	else if ((info->color.g - 25 < 0) && key == G_COLOR_M)
 	{
 		ft_putstr_fd("G_Color Value can't go below 0: ", 1);
 		ft_putnbr_fd(info->color.g, 1);
 		ft_putchar_fd('\n', 1);
 		return (1);
 	}
-	else if ((info->color.b - 25 < 0) && key == B_Color_M)
+	else if ((info->color.b - 25 < 0) && key == B_COLOR_M)
 	{
 		ft_putstr_fd("B_Color Value can't go below 0: ", 1);
 		ft_putnbr_fd(info->color.b, 1);
@@ -65,7 +65,7 @@ static int	check_max_values(int key, t_info *info)
 /*
 	Checks if the values given are valid inside the RGB range.
 */
-void	precheck_colors(char **av, int ac)
+void	validRGBvalues(char **av, int ac)
 {
 	int	a;
 
@@ -95,24 +95,23 @@ void	precheck_colors(char **av, int ac)
 	value are T, H and N in according order.
 	The values are limited by the range itself (0-255).
 */
-void	change_colors(int key, t_info *info)
+void	changeColorValues(int key, t_info *info)
 {
-	if (check_max_values(key, info))
+	if (checkIfMaxValuesReached(key, info))
 		return ;
 	else
 	{
-		if (key == R_Color)
+		if (key == R_COLOR)
 			info->color.r += 25;
-		else if (key == R_Color_M)
+		else if (key == R_COLOR_M)
 			info->color.r -= 25;
-		else if (key == G_Color)
+		else if (key == G_COLOR)
 			info->color.g += 25;
-		else if (key == G_Color_M)
+		else if (key == G_COLOR_M)
 			info->color.g -= 25;
-		else if (key == B_Color)
+		else if (key == B_COLOR)
 			info->color.b += 25;
-		else if (key == B_Color_M)
+		else if (key == B_COLOR_M)
 			info->color.b -= 25;
-		draw(info);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:40:56 by marmoral          #+#    #+#             */
-/*   Updated: 2024/02/21 12:20:41 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/03/05 22:13:30 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	Initializes the structure
 */
-void	init_info(t_info *info)
+void	initializeInfo(t_info *info)
 {
 	info->mlx_ptr = NULL;
 	info->window = NULL;
@@ -41,7 +41,7 @@ void	init_info(t_info *info)
 /*
 	Like mlx_put_pixel but for images
 */
-static void	put_p(int color, int x, int y, t_img *img)
+void	colorOnePixel(int color, int x, int y, t_img *img)
 {
 	char	*pixel;
 
@@ -52,7 +52,7 @@ static void	put_p(int color, int x, int y, t_img *img)
 /*
 	Turns rgb values to an int color value by bitshifting the number 0
 */
-static int	rgb2c(int r, int g, int b)
+int	rgbToColor(int r, int g, int b)
 {
 	return (0 << 24 | r << 16 | g << 8 | b);
 }
@@ -62,7 +62,7 @@ static int	rgb2c(int r, int g, int b)
 	by changing each time its rgb values by 9. If the value exceeds the desired
 	rgb values it resets them to the desired value.
 */
-static void	set_palette(t_info *info, int tr, int tg, int tb)
+void	createColorPalette(t_info *info, int tr, int tg, int tb)
 {
 	t_color	black;
 	int		i;
@@ -82,39 +82,7 @@ static void	set_palette(t_info *info, int tr, int tg, int tb)
 		black.b += 9;
 		if (black.b > tb)
 			black.b = tb;
-		info->palette[i] = rgb2c(black.r, black.g, black.b);
+		info->palette[i] = rgbToColor(black.r, black.g, black.b);
 	}
 	info->palette[info->max_it] = 0;
-}
-
-/*
-	Draws fractal, using the pixels x & y coordinates it calculates its
-	coordinates on the real-imaginary coordinated system
-*/
-void	draw(t_info *info)
-{
-	int			x;
-	int			y;
-	t_complex	c;
-
-	y = -1;
-	c.r = 0;
-	c.i = 0;
-	x = -1;
-	info->palette = ft_calloc((info->max_it + 1), sizeof(int));
-	if (!info->palette)
-		errorprint(7, (void *) 0);
-	set_palette(info, info->color.r, info->color.g, info->color.b);
-	while (y++ < HEIGHT)
-	{
-		while (++x < WIDTH)
-		{
-			c.r = info->min_r + x * ((info->max_r - info->min_r) / WIDTH);
-			c.i = info->min_i + y * ((info->max_i - info->min_i) / HEIGHT);
-			put_p(info->palette[mj(c.r, c.i, info)], x, y, &info->img);
-		}
-		x = -1;
-	}
-	free(info->palette);
-	mlx_put_image_to_window(info->mlx_ptr, info->window, info->mlx_img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: marmoral <marmoral@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:32:59 by marmoral          #+#    #+#             */
-/*   Updated: 2024/02/21 11:51:50 by marmoral         ###   ########.fr       */
+/*   Updated: 2024/03/05 22:06:27 by marmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,29 @@
 /*
 	Sets up the window with accordingly MLX library functions.
 */
-static void	setup_win(t_info *info)
+static void	setupWindow(t_info *info)
 {
 	info->mlx_ptr = mlx_init();
 	info->window = mlx_new_window(info->mlx_ptr, WIDTH, HEIGHT, "fract-ol");
 	info->mlx_img = mlx_new_image(info->mlx_ptr, WIDTH, HEIGHT);
 	info->img.addr = mlx_get_data_addr(info->mlx_img, &info->img.bpp,
 			&info->img.line_len, &info->img.endian);
-	mlx_key_hook(info->window, lisener, info);
+	mlx_key_hook(info->window, listener, info);
 	mlx_mouse_hook(info->window, zoom, info);
-	mlx_hook(info->window, 17, 0, exit_ac, info);
+	mlx_hook(info->window, 17, 0, exitWindow, info);
 }
 
 /*
 	Input parser.
 */
 
-static int	check(t_info *info, char **av, int ac)
+static int	inputParser(t_info *info, char **av, int ac)
 {
-	init_info(info);
+	initializeInfo(info);
 	if (((!ft_strncmp(av[1], "m", 1) && ac == 5))
 		|| ((!ft_strncmp(av[1], "j", 1) && ac == 7)))
 	{
-		precheck_colors(av, ac);
+		validRGBvalues(av, ac);
 		if (!ft_strncmp(av[1], "m", 1) && ac == 5)
 		{
 			info->type = 1;
@@ -76,14 +76,15 @@ int	main(int ac, char **av)
 {
 	t_info	info;
 
-	if (ac < 5 || !check(&info, av, ac))
+	if (ac < 5 || !inputParser(&info, av, ac))
 		errorprint(9, (void *) 0);
-	setup_win(&info);
+	setupWindow(&info);
 	draw(&info);
 	ft_putendl_fd("--Instructions--\n- User arrow keys to move\n"
 		"- Use mouse scroll wheel or '+' & '-' "
 		"keys to zoom in and out\n"
 		"- Use 'Q' to increase and 'E' to decrease iterations\n--", 1);
+	//mlx_string_put(info.mlx_ptr, info.window, 600, 200, rgb2c(255, 255, 255), "TEST");
 	mlx_loop(info.mlx_ptr);
 	return (0);
 }
